@@ -4,7 +4,7 @@ from flask_marshmallow import Marshmallow
 
 app = Flask(__name__)
 
-app.config['SECRET_KEY'] = 'helloworld'
+app.config['SECRET_KEY'] = 'hajhsgygquwy67417364'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 
 db = SQLAlchemy(app)
@@ -25,9 +25,9 @@ class Post(db.Model):
 class Comment(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String)
-    post_id = db.Column(db.Integer, db.ForeignKey('post.id')) # POSSIBLY CAN BE NULL
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id')) # CANNOT BE NULL
-    parent_id = db.Column(db.Integer, db.ForeignKey('comment.id')) # CAN BE NULL
+    post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    parent_id = db.Column(db.Integer, db.ForeignKey('comment.id'))
     replies = db.relationship('Comment') # NOT PARENT! ITS REPLIES, add to parent by root.replies.append([<Comment (reply) >])
 
 # SERIALIZERS
